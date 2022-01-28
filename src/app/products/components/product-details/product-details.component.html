@@ -1,0 +1,36 @@
+<section class="container" *ngIf="product">
+    <div class="left-column">
+        <img class="active" src="{{product.image}}" alt="{{product.title}}">
+    </div>
+    <div class="right-column">
+
+        <div class="product-description">
+            <span>Vegetable</span>
+            <h1>{{product.title}}</h1>
+        </div>
+        <br>
+        <div class="product-configuration">
+            <div class="cable-config">
+                <span>Weight</span>
+                <div class="product-price">
+                    <span> 1 kg : Rs. {{product.price}} </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-price">
+            <form #counterForm="ngForm" (ngSubmit)="addToCart(counterForm.value.count)" *ngIf="forms">
+                <input type="number" name="count" class="form-control" [ngModel]="count" style="width: 4rem auto;">
+                <button class="cart-btn">Add to cart</button>
+            </form>
+            <div *ngIf="counter" >
+                <button (click)="decrement()" class="btn btn-warning">Minus</button>
+                <span> &nbsp;&nbsp;{{count}}</span>
+                <button (click)="increment()" class="btn btn-success">Plus</button>
+            </div>
+        </div>
+
+        <!-- <a class="cart-btn">Add to cart</a> -->
+
+    </div>
+</section>
